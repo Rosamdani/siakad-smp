@@ -35,7 +35,7 @@ class ChampionshipForm
                             ->label('Tahun')
                             ->format('Y')
                             ->displayFormat('Y')
-                            ->native(false) 
+                            ->native(false)
                             ->required(),
                         Select::make('level')
                             ->options(ChampionLevel::class)

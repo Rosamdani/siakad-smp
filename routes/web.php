@@ -1,9 +1,9 @@
 <?php
 
 use App\Livewire\Pages\About;
+use App\Livewire\Pages\Achievements;
 use App\Livewire\Pages\Activities;
 use App\Livewire\Pages\Admission;
-use App\Livewire\Pages\Achievements;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Home;
 use App\Livewire\Pages\News;
