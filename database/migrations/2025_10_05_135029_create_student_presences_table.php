@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('student_presences', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Presence::class);
-            $table->foreignIdFor(\App\Models\User::class, 'student_id');
+            $table->foreignIdFor(\App\Models\Presence::class)->constrained();
+            $table->foreignIdFor(\App\Models\User::class, 'student_id')->constrained();
             $table->string('status')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();

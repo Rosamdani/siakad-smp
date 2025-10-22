@@ -10,9 +10,6 @@
             <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
-                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-400 via-primary-500 to-primary-700 text-lg font-semibold shadow-lg shadow-primary-900/25">
-                            SM
-                        </span>
                         <div>
                             <p class="text-xs font-semibold uppercase tracking-[0.15em] text-primary-100">SMP Muara Indonesia</p>
                             <p class="text-xl font-semibold text-white">Sekolah Unggul, Berkarakter, Berdaya Saing Global</p>
@@ -60,7 +57,6 @@
                     <div class="space-y-3">
                         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-primary-200">Akses Cepat</p>
                         <ul class="space-y-2 text-neutral-200/90">
-                            <li><a href="{{ route('admission') }}" class="transition-colors duration-200 hover:text-white/90">PPDB &amp; Pendaftaran</a></li>
                             <li><a href="/admin/login" class="transition-colors duration-200 hover:text-white/90">Portal Akademik</a></li>
                             <li><a href="#" class="transition-colors duration-200 hover:text-white/90">Perpustakaan Digital</a></li>
                             <li><a href="{{ route('contact') }}" class="transition-colors duration-200 hover:text-white/90">Hubungi Kami</a></li>
@@ -108,32 +104,6 @@
                     </div>
                 </div>
 
-                <div class="space-y-5 rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
-                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-primary-200">PPDB 2025/2026</p>
-                    <p class="text-lg font-semibold leading-7 text-white">Siapkan Masa Depan Cerah Anak Anda Bersama SMP Muara Indonesia</p>
-                    <p class="text-sm text-neutral-200/80">
-                        Dapatkan informasi lengkap mengenai persyaratan, jadwal seleksi, serta fasilitas beasiswa bagi siswa berprestasi.
-                    </p>
-                    <div class="space-y-3">
-                        <a href="{{ route('admission') }}" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-secondary-500 to-secondary-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-secondary-900/25 transition-transform duration-200 hover:-translate-y-0.5">
-                            Informasi PPDB
-                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M5 12h14m0 0l-5 5m5-5l-5-5" />
-                            </svg>
-                        </a>
-                        <a href="#" class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-neutral-100 transition-colors duration-200 hover:border-white/40 hover:bg-white/10">
-                            Unduh Brosur
-                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-4-5l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="rounded-2xl bg-white/5 p-4 text-xs text-neutral-200/80 ring-1 ring-white/10">
-                        <p class="font-semibold tracking-wide text-primary-100">Jam Layanan:</p>
-                        <p>Senin - Jumat : 07.30 - 16.00 WIB</p>
-                        <p>Sabtu : 08.00 - 12.00 WIB</p>
-                    </div>
-                </div>
             </div>
         </div>
 
