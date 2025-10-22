@@ -1,2 +1,3 @@
 #!/bin/sh
-./vendor/bin/pint --dirty || exit 1
+echo "Running Laravel Pint..."
+vendor/bin/pint --config pint.json --dirty || exit 1
