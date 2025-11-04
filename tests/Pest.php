@@ -45,7 +45,50 @@ expect()->extend('toBeOne', function () {
 
 function loginAsAdmin()
 {
-    test()->actingAs(User::factory()->isAdmin()->create());
+    $admin = User::factory()->isAdmin()->create();
+    test()->actingAs($admin);
+}
+
+function enableIconFallback(): void
+{
+    config()->set('blade-icons.fallback', 'heroicon-o-document-text');
+}
+
+function createActiveAcademicYear(array $attributes = []): \App\Models\AcademicYear
+{
+    return \App\Models\AcademicYear::factory()
+        ->state(array_merge(['is_active' => true], $attributes))
+        ->create();
+}
+
+function createClassroomWithStudents(int $studentCount = 3): \App\Models\Classroom
+{
+    $academicYear = createActiveAcademicYear();
+
+    $classroom = \App\Models\Classroom::factory()
+        ->for($academicYear, 'academicYear')
+        ->create();
+
+    $students = \App\Models\Student::factory()->count($studentCount)->create();
+
+    $students->each(function (\App\Models\Student $student, int $index) use ($classroom): void {
+        \App\Models\StudentClassroom::factory()
+            ->for($student, 'student')
+            ->for($classroom, 'classroom')
+            ->state(['is_active' => $index === 0])
+            ->create();
+    });
+
+    return $classroom->refresh();
+}
+
+function createPresenceForClassroom(\App\Models\Classroom $classroom, array $attributes = []): \App\Models\Presence
+{
+    return \App\Models\Presence::create([
+        'classroom_id' => $classroom->id,
+        'date' => now()->toDateString(),
+        ...$attributes,
+    ]);
 }
 
 function something()

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Presence::class)->constrained();
             $table->foreignIdFor(\App\Models\User::class, 'student_id')->constrained();
-            $table->string('status')->nullable();
-            $table->string('note')->nullable();
+            $table->string('status', 10)->nullable();
+            $table->string('note', 200)->nullable();
             $table->timestamps();
         });
     }

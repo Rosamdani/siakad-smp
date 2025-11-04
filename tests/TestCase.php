@@ -17,7 +17,7 @@ abstract class TestCase extends BaseTestCase
 
     public function role(): void
     {
-        $this->artisan('db:seed');
+        $this->artisan('app:sync-roles');
         $this->app->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
     }
 }

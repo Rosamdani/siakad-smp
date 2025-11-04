@@ -22,22 +22,34 @@ class StudentForm
                     ->schema([
                         TextInput::make('name')
                             ->label('Nama Siswa')
+                            ->placeholder('Masukkan nama lengkap...')
+                            ->maxLength(255)
                             ->required(),
                         TextInput::make('email')
                             ->label('Email')
                             ->email()
+                            ->placeholder('Masukkan email...')
                             ->required(),
-                        TextInput::make('nisn'),
+                        TextInput::make('nisn')
+                            ->label('NISN')
+                            ->placeholder('Masukkan NISN...')
+                            ->maxLength(20)
+                            ->required(),
                         DatePicker::make('date_of_birth')
+                            ->maxDate(now()->subYears(5))
                             ->label('Tanggal Lahir'),
                         Select::make('gender')
+                            ->label('Jenis Kelamin')
                             ->options(Gender::class),
-                        Textarea::make('address')
-                            ->label('Alamat')
-                            ->columnSpanFull(),
                         TextInput::make('password')
                             ->password()
+                            ->label('Kata Sandi')
+                             ->placeholder('Masukkan kata sandi...')
                             ->required(),
+                        Textarea::make('address')
+                            ->label('Alamat')
+                            ->placeholder('Masukkan alamat...')
+                            ->columnSpanFull(),
                     ]),
             ]);
     }

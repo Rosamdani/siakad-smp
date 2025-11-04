@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Enums\Roles;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class SyncRoles extends Command
 {
@@ -30,17 +31,26 @@ class SyncRoles extends Command
 
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
+        $defaultPanelId = \Filament\Facades\Filament::getPanel('admin')->getId();
+
+        Artisan::call('shield:generate', [
+            '--all' => true,
+            '--option' => 'permissions',
+            '--panel' => $defaultPanelId,
+        ]);
+
         collect(Roles::cases())->each(function (Roles $role) {
             \Spatie\Permission\Models\Role::updateOrCreate([
                 'name' => $role->value,
+                'guard_name' => 'web',
             ]);
         });
 
         $allPermissions = \Spatie\Permission\Models\Permission::all();
 
-        $superadminRole = \Spatie\Permission\Models\Role::findByName(Roles::ADMIN->value);
+        $adminRole = \Spatie\Permission\Models\Role::findByName(Roles::ADMIN->value);
 
-        $superadminRole->syncPermissions($allPermissions);
+        $adminRole->syncPermissions($allPermissions);
 
         $this->info('Roles synchronized successfully.');
     }

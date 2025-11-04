@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('championships', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Student::class);
-            $table->string('name')->comment('Name of the championship');
+            $table->string('name', 100)->comment('Name of the championship');
             $table->year('year')->comment('Year the championship took place');
-            $table->string('level')->comment('e.g., school, district, provincial, national, international');
-            $table->string('position')->comment('e.g., first place, second place, third place, participant');
-            $table->string('type')->comment('e.g., individual, team');
+            $table->string('level', 10)->comment('e.g., school, district, provincial, national, international');
+            $table->string('position', 50)->comment('e.g., first place, second place, third place, participant');
+            $table->string('type', 10)->comment('e.g., individual, team');
             $table->timestamps();
         });
     }

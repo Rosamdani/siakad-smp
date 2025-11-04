@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nisn')->unique()->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('gender')->nullable();
-            $table->string('address')->nullable();
+            $table->text('address')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

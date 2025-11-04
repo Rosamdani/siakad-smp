@@ -6,7 +6,9 @@ use App\Enums\Gender;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class AdminForm
@@ -15,21 +17,34 @@ class AdminForm
     {
         return $schema
             ->components([
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('email')
-                    ->label('Email address')
-                    ->email()
-                    ->required(),
-                DateTimePicker::make('email_verified_at'),
-                TextInput::make('nisn'),
-                DatePicker::make('date_of_birth'),
-                Select::make('gender')
-                    ->options(Gender::class),
-                TextInput::make('address'),
-                TextInput::make('password')
-                    ->password()
-                    ->required(),
+                Section::make()
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nama Lengkap')
+                            ->placeholder('Masukkan nama lengkap...')
+                            ->maxLength(255)
+                            ->required(),
+                        TextInput::make('email')
+                            ->label('Email')
+                            ->placeholder('Masukkan email...')
+                            ->email()
+                            ->required(),
+                        Select::make('gender')
+                            ->label('Jenis Kelamin')
+                            ->options(Gender::class),
+                        TextInput::make('password')
+                            ->password()
+                            ->label('Kata Sandi')
+                            ->placeholder('Masukkan kata sandi...')
+                            ->required(),
+                        Textarea::make('address')
+                            ->label('Alamat')
+                            ->placeholder('Masukkan alamat...')
+                            ->columnSpanFull()
+                            ->rows(3),
+                    ]),
             ]);
     }
 }
