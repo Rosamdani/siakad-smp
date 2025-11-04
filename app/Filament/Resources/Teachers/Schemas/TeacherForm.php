@@ -3,9 +3,8 @@
 namespace App\Filament\Resources\Teachers\Schemas;
 
 use App\Enums\Gender;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -21,20 +20,30 @@ class TeacherForm
                     ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
+                            ->label('Nama Lengkap')
+                            ->placeholder('Masukkan nama lengkap...')
+                            ->maxLength(255)
                             ->required(),
                         TextInput::make('email')
-                            ->label('Email address')
+                            ->label('Email')
                             ->email()
+                            ->placeholder('Masukkan email...')
+                            ->maxLength(255)
                             ->required(),
-                        DateTimePicker::make('email_verified_at'),
-                        TextInput::make('nisn'),
-                        DatePicker::make('date_of_birth'),
                         Select::make('gender')
+                            ->label('Jenis Kelamin')
                             ->options(Gender::class),
-                        TextInput::make('address'),
                         TextInput::make('password')
                             ->password()
+                            ->label('Kata Sandi')
+                            ->placeholder('Masukkan kata sandi...')
+                            ->maxLength(255)
                             ->required(),
+                        Textarea::make('address')
+                            ->label('Alamat')
+                            ->rows(3)
+                            ->placeholder('Masukkan alamat...')
+                            ->columnSpanFull(),
                     ]),
             ]);
     }

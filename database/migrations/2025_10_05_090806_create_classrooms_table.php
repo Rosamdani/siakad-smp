@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\AcademicYear::class);
             $table->foreignIdFor(\App\Models\User::class, 'teacher_id')->nullable();
-            $table->string('name');
+            $table->string('name', 50);
             $table->timestamps();
         });
     }
