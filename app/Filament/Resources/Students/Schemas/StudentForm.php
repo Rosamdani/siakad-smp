@@ -44,7 +44,7 @@ class StudentForm
                         TextInput::make('password')
                             ->password()
                             ->label('Kata Sandi')
-                             ->placeholder('Masukkan kata sandi...')
+                            ->placeholder('Masukkan kata sandi...')
                             ->required(),
                         Textarea::make('address')
                             ->label('Alamat')

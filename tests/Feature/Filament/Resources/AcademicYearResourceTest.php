@@ -1,11 +1,11 @@
 <?php
 
-use App\Filament\Resources\AcademicYears\AcademicYearResource;
 use App\Filament\Resources\AcademicYears\Pages\CreateAcademicYear;
 use App\Filament\Resources\AcademicYears\Pages\EditAcademicYear;
 use App\Filament\Resources\AcademicYears\Pages\ListAcademicYears;
 use App\Filament\Resources\AcademicYears\Pages\ViewAcademicYear;
 use App\Models\AcademicYear;
+
 use function Pest\Livewire\livewire;
 
 beforeEach(function () {

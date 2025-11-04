@@ -3,8 +3,6 @@
 namespace App\Filament\Resources\Teachers\Schemas;
 
 use App\Enums\Gender;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -38,8 +36,8 @@ class TeacherForm
                         TextInput::make('password')
                             ->password()
                             ->label('Kata Sandi')
-                             ->placeholder('Masukkan kata sandi...')
-                             ->maxLength(255)
+                            ->placeholder('Masukkan kata sandi...')
+                            ->maxLength(255)
                             ->required(),
                         Textarea::make('address')
                             ->label('Alamat')
