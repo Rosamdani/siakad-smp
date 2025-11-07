@@ -17,12 +17,16 @@ class AcademicYearInfolist
                     ->columns(2)
                     ->columnSpanFull()
                     ->schema([
-                        TextEntry::make('name'),
+                        TextEntry::make('name')
+                            ->label('Nama Tahun Ajaran'),
                         TextEntry::make('start_date')
+                            ->label('Tanggal Mulai')
                             ->date(),
                         TextEntry::make('end_date')
+                            ->label('Tanggal Selesai')
                             ->date(),
                         IconEntry::make('is_active')
+                            ->label('Aktif')
                             ->boolean(),
                     ]),
             ]);
