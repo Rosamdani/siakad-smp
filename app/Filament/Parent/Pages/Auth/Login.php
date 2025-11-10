@@ -27,7 +27,7 @@ class Login extends BaseLogin
                     ->autofocus()
                     ->extraInputAttributes(['tabindex' => 1]),
                 TextInput::make('date_of_birth')
-                    ->label('Tanggal Lahir (ddmmyyyy)')
+                    ->label('Tanggal Lahir (hhbbyyyy)')
                     ->required()
                     ->placeholder('Contoh: 01022010')
                     ->minLength(8)

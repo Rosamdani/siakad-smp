@@ -8,6 +8,7 @@ return [
      */
     'settings' => [
         WebsiteSetting::class,
+        App\Settings\LetterheadSetting::class,
     ],
 
     /*
