@@ -21,12 +21,14 @@ class ClassroomForm
                         Select::make('academic_year_id')
                             ->label('Tahun Ajaran')
                             ->relationship('academicYear', 'name')
+                            ->preload()
                             ->searchable()
                             ->required(),
                         Select::make('teacher_id')
                             ->label('Wali Kelas')
                             ->relationship('teacher', 'name', fn ($query) => $query->whereHas('roles', fn ($q) => $q->where('name', Roles::TEACHER)))
                             ->searchable()
+                            ->preload()
                             ->required(),
                         TextInput::make('name')
                             ->label('Nama Kelas')

@@ -22,10 +22,12 @@ class StudentClassroomForm
                             ->label('Siswa')
                             ->relationship('student', 'name', fn ($query) => $query->whereHas('roles', fn ($q) => $q->where('name', Roles::STUDENT)))
                             ->searchable()
+                            ->preload()
                             ->required(),
                         Select::make('classroom_id')
                             ->label('Kelas')
                             ->relationship('classroom', 'name')
+                            ->preload()
                             ->searchable()
                             ->required(),
                         Toggle::make('is_active')

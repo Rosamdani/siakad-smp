@@ -7,7 +7,7 @@ return [
      * put them (manually) here.
      */
     'settings' => [
-        WebsiteSetting::class,
+        App\Settings\WebsiteSetting::class,
         App\Settings\LetterheadSetting::class,
     ],
 
