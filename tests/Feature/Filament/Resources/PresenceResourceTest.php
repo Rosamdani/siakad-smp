@@ -7,6 +7,7 @@ use App\Filament\Resources\Presences\Pages\ListPresences;
 use App\Filament\Resources\Presences\Pages\ViewPresence;
 use App\Filament\Resources\Presences\RelationManagers\StudentPresencesRelationManager;
 use App\Models\Presence;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -72,6 +73,22 @@ it('can view presence details', function () {
     Livewire::test(ViewPresence::class, ['record' => $presence->getKey()])
         ->assertSet('record.date', $presence->date)
         ->assertActionExists('edit');
+});
+
+it('can download presence pdf report', function () {
+    $classroom = createClassroomWithStudents(1);
+    $classroom->update(['name' => 'Kelas 7A']);
+    $presence = createPresenceForClassroom($classroom, ['date' => now()->toDateString()]);
+
+    $expectedFileName = sprintf(
+        'presensi-%s-%s.pdf',
+        Str::slug($classroom->fresh()->name),
+        \Illuminate\Support\Carbon::parse($presence->date)->format('Ymd'),
+    );
+
+    Livewire::test(ViewPresence::class, ['record' => $presence->getKey()])
+        ->callAction('printPdf')
+        ->assertFileDownloaded($expectedFileName);
 });
 
 it('can delete presences via bulk action', function () {

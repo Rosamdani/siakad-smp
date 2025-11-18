@@ -18,6 +18,8 @@ class StudentPresencesRelationManager extends RelationManager
 {
     protected static string $relationship = 'studentPresences';
 
+    protected static ?string $title = 'Presensi Siswa';
+
     public function infolist(Schema $schema): Schema
     {
         return $schema
@@ -35,9 +37,6 @@ class StudentPresencesRelationManager extends RelationManager
                     ->label('Nama Siswa')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('student.nisn')
-                    ->label('NISN')
-                    ->searchable(),
                 ViewColumn::make('status')
                     ->label('Status Kehadiran')
                     ->view('tables.columns.presence-status-checkboxes')

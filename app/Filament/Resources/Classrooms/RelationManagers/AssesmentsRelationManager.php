@@ -30,6 +30,7 @@ class AssesmentsRelationManager extends RelationManager
                 Select::make('subject_id')
                     ->label('Mata Pelajaran')
                     ->relationship('subject', 'name')
+                    ->preload()
                     ->required(),
                 Select::make('type')
                     ->label('Tipe')

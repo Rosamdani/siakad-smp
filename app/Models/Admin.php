@@ -19,5 +19,9 @@ class Admin extends User
                 $query->where('name', Roles::ADMIN);
             });
         });
+
+        static::created(function ($admin) {
+            $admin->assignRole(Roles::ADMIN);
+        });
     }
 }

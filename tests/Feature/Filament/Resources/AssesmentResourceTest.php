@@ -8,6 +8,8 @@ use App\Filament\Resources\Assesments\Pages\ViewAssesment;
 use App\Filament\Resources\Assesments\RelationManagers\StudentAssesmentsRelationManager;
 use App\Models\Assesment;
 use App\Models\Subject;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -80,6 +82,31 @@ it('can view assessment details', function () {
     Livewire::test(ViewAssesment::class, ['record' => $assesment->getKey()])
         ->assertSet('record.type', fn ($value) => $value === AssesmentType::EXAM)
         ->assertActionExists('edit');
+});
+
+it('can download assessment pdf report', function () {
+    $classroom = createClassroomWithStudents(1);
+    $classroom->update(['name' => 'Kelas 8A']);
+    $subject = Subject::factory()->create(['name' => 'Matematika']);
+    $assesment = Assesment::factory()
+        ->for($classroom, 'classroom')
+        ->for($subject, 'subject')
+        ->create(['type' => AssesmentType::QUIZ]);
+
+    Carbon::setTestNow($now = now());
+
+    $expectedFileName = sprintf(
+        'penilaian-%s-%s-%s.pdf',
+        Str::slug($subject->name),
+        Str::slug($classroom->name),
+        $now->format('YmdHis'),
+    );
+
+    Livewire::test(ViewAssesment::class, ['record' => $assesment->getKey()])
+        ->callAction('printScores')
+        ->assertFileDownloaded($expectedFileName);
+
+    Carbon::setTestNow();
 });
 
 it('can delete assessments via bulk action', function () {

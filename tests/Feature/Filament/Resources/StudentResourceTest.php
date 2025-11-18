@@ -10,6 +10,7 @@ use App\Filament\Resources\Students\RelationManagers\StudentPresencesRelationMan
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -35,6 +36,8 @@ it('can create a student', function () {
         'name' => 'Siswa Baru',
         'email' => 'siswa-baru@example.com',
         'password' => 'PasswordSiswa123!',
+        'nisn' => Str::random(10),
+        'date_of_birth' => '2008-05-15',
         'address' => 'Alamat Lengkap',
     ];
 
@@ -48,6 +51,7 @@ it('can create a student', function () {
     expect($studentUser)->not()->toBeNull();
     expect(Hash::check($payload['password'], $studentUser->password))->toBeTrue();
     expect($studentUser->address)->toEqual('Alamat Lengkap');
+    expect($studentUser->date_of_birth)->toEqual('2008-05-15');
 });
 
 it('can update a student', function () {
