@@ -15,10 +15,10 @@
     <section class="max-w-4xl mx-auto px-6 lg:px-8 pt-16 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">Program</p>
         <h1 class="mt-4 text-4xl font-semibold text-slate-900">Jalur pembelajaran sesuai potensi siswa.</h1>
-        <p class="mt-6 text-base text-slate-600">Guru-guru kami merancang jalur bertahap agar siswa dapat mengeksplorasi minat tanpa meninggalkan fondasi akademik penting.</p>
+        <p class="mt-6 text-base text-slate-600 py-8">Guru-guru kami merancang jalur bertahap agar siswa dapat mengeksplorasi minat tanpa meninggalkan fondasi akademik penting.</p>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 lg:px-8">
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-8">
         <div class="grid gap-6 md:grid-cols-3">
             @foreach ($tracks as $track)
                 <article class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">

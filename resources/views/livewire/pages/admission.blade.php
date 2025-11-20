@@ -20,7 +20,7 @@
     <section class="max-w-4xl mx-auto px-6 lg:px-8 pt-16 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">PPDB</p>
         <h1 class="mt-4 text-4xl font-semibold text-slate-900">Bergabung dengan {{ $settings->site_name }} dimulai dari sini.</h1>
-        <p class="mt-6 text-base text-slate-600">Kami membuka pendaftaran untuk siswa kelas VII yang siap tumbuh dalam ekosistem belajar inovatif. Semua proses dapat dilakukan secara daring.</p>
+        <p class="mt-6 text-base text-slate-600 pb-8">Kami membuka pendaftaran untuk siswa kelas VII yang siap tumbuh dalam ekosistem belajar inovatif. Semua proses dapat dilakukan secara daring.</p>
         <a href="mailto:{{ $settings->email }}" class="mt-6 inline-flex items-center gap-2 rounded-full bg-site-primary px-5 py-2.5 text-sm font-semibold text-white">
             Konsultasi PPDB
             <span aria-hidden="true">&rarr;</span>

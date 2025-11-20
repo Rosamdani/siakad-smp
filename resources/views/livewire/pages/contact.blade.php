@@ -13,10 +13,10 @@
     <section class="max-w-4xl mx-auto px-6 lg:px-8 pt-16 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">Kontak</p>
         <h1 class="mt-4 text-4xl font-semibold text-slate-900">Terhubung dengan {{ $settings->site_name }}.</h1>
-        <p class="mt-6 text-base text-slate-600">Beragam kanal komunikasi tersedia untuk membantu kebutuhan informasi akademik maupun PPDB.</p>
+        <p class="mt-6 text-base text-slate-600 pb-8">Beragam kanal komunikasi tersedia untuk membantu kebutuhan informasi akademik maupun PPDB.</p>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 lg:px-8">
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-8">
         <div class="grid gap-6 md:grid-cols-3">
             @foreach ($contacts as $contact)
                 @continue(blank(data_get($contact, 'value')))
