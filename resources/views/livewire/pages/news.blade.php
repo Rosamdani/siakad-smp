@@ -10,7 +10,7 @@
     <section class="max-w-4xl mx-auto px-6 lg:px-8 pt-16 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">Berita</p>
         <h1 class="mt-4 text-4xl font-semibold text-slate-900">Cerita terbaru dari ruang belajar kami.</h1>
-        <p class="mt-6 text-base text-slate-600">Ikuti kabar mengenai inovasi program, prestasi siswa, hingga agenda kolaborasi terbaru SMP Muara Indonesia.</p>
+        <p class="mt-6 text-base text-slate-600 pb-8">Ikuti kabar mengenai inovasi program, prestasi siswa, hingga agenda kolaborasi terbaru SMP Muara Indonesia.</p>
     </section>
 
     <section class="max-w-5xl mx-auto px-6 lg:px-8 space-y-6">

@@ -103,9 +103,6 @@ class ManageWebsite extends SettingsPage
                                 ->label('Tautan Tombol Utama')
                                 ->placeholder('/ppdb')
                                 ->required(),
-                            TextInput::make('hero_secondary_cta_label')
-                                ->label('Teks Tombol Sekunder')
-                                ->placeholder('Kunjungi Kampus'),
                             TextInput::make('hero_secondary_cta_url')
                                 ->label('Tautan Tombol Sekunder')
                                 ->placeholder('/hubungi-kami'),

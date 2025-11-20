@@ -19,7 +19,7 @@
     <section class="max-w-4xl mx-auto px-6 lg:px-8 pt-16 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">Prestasi</p>
         <h1 class="mt-4 text-4xl font-semibold text-slate-900">Jejak prestasi siswa & guru {{ $settings->site_name }}.</h1>
-        <p class="mt-6 text-base text-slate-600">Kami percaya setiap siswa punya panggungnya. Prestasi akademik maupun non-akademik dipandu mentor profesional dengan ekosistem pelatihan yang konsisten.</p>
+        <p class="mt-6 text-base text-slate-600 pb-8">Kami percaya setiap siswa punya panggungnya. Prestasi akademik maupun non-akademik dipandu mentor profesional dengan ekosistem pelatihan yang konsisten.</p>
     </section>
 
     <section class="max-w-5xl mx-auto px-6 lg:px-8">
@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 lg:px-8">
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-8">
         <div class="grid gap-6 md:grid-cols-2">
             @foreach ($achievements as $item)
                 <article class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">

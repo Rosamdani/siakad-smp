@@ -16,10 +16,10 @@
     <section class="max-w-4xl mx-auto px-6 lg:px-8 pt-16 text-center">
         <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">Kegiatan Siswa</p>
         <h1 class="mt-4 text-4xl font-semibold text-slate-900">Eksplorasi bakat yang terstruktur & menyenangkan.</h1>
-        <p class="mt-6 text-base text-slate-600">Setiap pekan, siswa bebas memilih klub aktivitas dengan pendampingan mentor sesuai passion. Kalender kegiatan juga diisi event kolaboratif yang memperkuat karakter.</p>
+        <p class="mt-6 text-base text-slate-600 pb-8">Setiap pekan, siswa bebas memilih klub aktivitas dengan pendampingan mentor sesuai passion. Kalender kegiatan juga diisi event kolaboratif yang memperkuat karakter.</p>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 lg:px-8">
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-8">
         <div class="grid gap-6 md:grid-cols-2">
             @foreach ($weeklyClubs as $club)
                 <article class="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
@@ -35,7 +35,7 @@
     </section>
 
     <section class="bg-white py-16">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 py-8">
             <p class="text-sm font-semibold uppercase tracking-[0.4em] text-site-secondary">Agenda Besar</p>
             <div class="mt-8 space-y-6">
                 @foreach ($events as $event)

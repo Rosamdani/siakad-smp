@@ -73,7 +73,7 @@
     </section>
 
     @if ($stats->isNotEmpty())
-        <section class="max-w-6xl mx-auto px-6 lg:px-8">
+        <section class="max-w-6xl mx-auto px-6 lg:px-8 py-8">
             <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach ($stats as $stat)
                     <div class="rounded-3xl bg-white shadow-card border border-slate-100 p-6 flex flex-col gap-2">
@@ -210,21 +210,4 @@
             </div>
         </section>
     @endif
-
-    <section class="max-w-6xl mx-auto px-6 lg:px-8 pb-8">
-        <div class="rounded-[2.5rem] text-white px-8 py-12 lg:px-16 lg:py-16 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between" style="background-image: linear-gradient(135deg, var(--site-primary), var(--site-secondary));">
-            <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.4em] text-white/70">PPDB</p>
-                <h2 class="text-3xl font-semibold mt-3">{{ $settings->cta_title }}</h2>
-                <p class="mt-3 text-base text-white/80 max-w-2xl">{{ $settings->cta_description }}</p>
-            </div>
-            @php($ctaLink = $resolveUrl($settings->cta_button_url))
-            @if ($ctaLink)
-                <a href="{{ $ctaLink }}" class="btn-secondary bg-white/10 border-white/30 text-white inline-flex items-center gap-2">
-                    {{ $settings->cta_button_label }}
-                    <span aria-hidden="true">&rarr;</span>
-                </a>
-            @endif
-        </div>
-    </section>
 </x-page-wrapper>

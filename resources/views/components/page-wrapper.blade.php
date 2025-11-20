@@ -1,3 +1,3 @@
-<div {{ $attributes->class(['page-wrapper']) }}>
+<div>
     {{ $slot }}
 </div>

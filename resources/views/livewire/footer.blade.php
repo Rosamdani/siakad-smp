@@ -1,5 +1,5 @@
 <footer class="bg-slate-900 text-white mt-16">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid gap-12 lg:grid-cols-[1.1fr,0.9fr,1fr]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 grid gap-12 lg:grid-cols-3">
         <div class="space-y-4">
             <p class="text-2xl font-semibold">{{ $settings->site_name }}</p>
             <p class="text-sm text-slate-300 leading-relaxed">{{ $settings->footer_message }}</p>
@@ -39,10 +39,6 @@
                     <li>Email: {{ $settings->email }}</li>
                 @endif
             </ul>
-            <a href="{{ route('admission') }}" class="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 px-5 py-2.5 text-sm font-semibold">
-                Informasi PPDB
-                <span aria-hidden="true">&rarr;</span>
-            </a>
         </div>
     </div>
     <div class="border-t border-white/10 py-4 text-center text-xs text-slate-400">&copy; {{ now()->year }} {{ $settings->site_name }}. All rights reserved.</div>

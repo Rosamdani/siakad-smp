@@ -95,15 +95,6 @@
                 opacity: 0.9;
             }
 
-            .btn-secondary {
-                border: 1px solid rgba(255, 255, 255, 0.4);
-                color: #fff;
-                border-radius: 999px;
-                padding: 0.85rem 1.75rem;
-                font-weight: 600;
-                transition: background 0.2s ease, color 0.2s ease;
-            }
-
             .btn-secondary:hover {
                 background: #fff;
                 color: var(--site-primary);
@@ -112,7 +103,7 @@
     </head>
     <body class="font-sans antialiased" style="background-color: var(--site-bg); color: var(--site-text);">
         <div class="min-h-screen flex flex-col">
-            <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-white/40">
+            <header class="sticky top-0 z-40 bg-white shadow-sm">
                 <div class="max-w-7xl mx-auto px-6 lg:px-8">
                     <div class="flex items-center justify-between py-4">
                         <a href="{{ route('home') }}" class="flex items-center gap-3">
@@ -143,7 +134,7 @@
                             @endforeach
                         </nav>
                         <div class="hidden lg:flex items-center gap-3">
-                            <a href="{{ route('admission') }}" class="btn-primary">PPDB</a>
+                            <a href="{{ url('/admin') }}" class="btn-primary">Login</a>
                         </div>
                         <button class="lg:hidden inline-flex items-center justify-center rounded-full border border-slate-200 p-2 text-slate-600" type="button" data-mobile-toggle>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-6 w-6">
