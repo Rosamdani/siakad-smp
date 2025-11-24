@@ -5,6 +5,7 @@ namespace App\Filament\Parent\Pages\Auth;
 use App\Models\User;
 use Carbon\Carbon;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Filament\Actions\Action;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Auth\Pages\Login as BaseLogin;
 use Filament\Facades\Filament;
@@ -74,6 +75,26 @@ class Login extends BaseLogin
         session()->regenerate();
 
         return app(LoginResponse::class);
+    }
+
+    /**
+     * @return array<Action>
+     */
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getAuthenticateFormAction(),
+            $this->getAdminLoginAction(),
+        ];
+    }
+
+    protected function getAdminLoginAction(): Action
+    {
+        return Action::make('adminLogin')
+            ->label('Masuk sebagai Admin')
+            ->url(Filament::getPanel('admin')?->getLoginUrl() ?? url('/admin/login'))
+            ->color('gray')
+            ->outlined();
     }
 
     protected function parseBirthDate(string $input): Carbon

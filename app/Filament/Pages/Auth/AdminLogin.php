@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Filament\Pages\Auth;
+
+use Filament\Actions\Action;
+use Filament\Auth\Pages\Login as BaseLogin;
+use Filament\Facades\Filament;
+
+class AdminLogin extends BaseLogin
+{
+    /**
+     * @return array<Action>
+     */
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getAuthenticateFormAction(),
+            $this->getParentLoginAction(),
+        ];
+    }
+
+    protected function getParentLoginAction(): Action
+    {
+        return Action::make('parentLogin')
+            ->label('Masuk sebagai Orang Tua')
+            ->url(Filament::getPanel('parent')?->getLoginUrl() ?? url('/parent/login'))
+            ->color('gray')
+            ->outlined();
+    }
+}
