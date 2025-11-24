@@ -11,11 +11,7 @@ class Assesment extends Model
     /** @use HasFactory<\Database\Factories\AssessmentFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'classroom_id',
-        'subject_id',
-        'type',
-    ];
+    protected $guarded = [];
 
     protected $casts = [
         'type' => AssesmentType::class,

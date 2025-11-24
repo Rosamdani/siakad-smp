@@ -4,25 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class StudentAssesment extends Model
 {
     /** @use HasFactory<\Database\Factories\StudentAssesmentFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'student_id',
-        'assessment_id',
-        'score',
-    ];
+    protected $guarded = [];
 
-    public function student()
+    public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id');
     }
 
-    public function assessment()
+    public function assessment(): BelongsTo
     {
-        return $this->belongsTo(Assesment::class);
+        return $this->belongsTo(Assesment::class, 'assesment_id');
     }
 }

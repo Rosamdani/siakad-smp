@@ -18,7 +18,7 @@ class StudentAssesmentFactory extends Factory
     {
         return [
             'student_id' => \App\Models\User::factory()->isStudent(),
-            'assessment_id' => \App\Models\Assesment::factory(),
+            'assesment_id' => \App\Models\Assesment::factory(),
             'score' => $this->faker->randomFloat(2, 0, 100),
         ];
     }

@@ -35,7 +35,7 @@ enum AssesmentType: string implements HasColor, HasIcon, HasLabel
     {
         return match ($this) {
             self::QUIZ => 'heroicon-o-question-mark-circle',
-            self::ASSIGNMENT => 'heroicon-o-clipboard-list',
+            self::ASSIGNMENT => 'heroicon-o-clipboard',
             self::EXAM => 'heroicon-o-document-text',
             self::MIDTERM => 'heroicon-o-calendar',
             self::FINAL => 'heroicon-o-check-badge',
