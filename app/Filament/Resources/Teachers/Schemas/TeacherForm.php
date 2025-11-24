@@ -26,6 +26,7 @@ class TeacherForm
                             ->required(),
                         TextInput::make('email')
                             ->label('Email')
+                            ->unique(ignoreRecord: true)
                             ->email()
                             ->placeholder('Masukkan email...')
                             ->maxLength(255)

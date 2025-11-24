@@ -28,6 +28,7 @@ class StudentForm
                         TextInput::make('email')
                             ->label('Email')
                             ->email()
+                            ->unique(ignoreRecord: true)
                             ->placeholder('Masukkan email...')
                             ->required(),
                         TextInput::make('nisn')

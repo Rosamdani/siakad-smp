@@ -27,6 +27,7 @@ class AdminForm
                         TextInput::make('email')
                             ->label('Email')
                             ->placeholder('Masukkan email...')
+                            ->unique(ignoreRecord: true)
                             ->email()
                             ->required(),
                         Select::make('gender')
