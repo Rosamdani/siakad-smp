@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('gender')->nullable();
             $table->text('address')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

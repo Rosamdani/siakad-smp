@@ -41,11 +41,6 @@ class StudentForm
                         Select::make('gender')
                             ->label('Jenis Kelamin')
                             ->options(Gender::class),
-                        TextInput::make('password')
-                            ->password()
-                            ->label('Kata Sandi')
-                            ->placeholder('Masukkan kata sandi...')
-                            ->required(),
                         Textarea::make('address')
                             ->label('Alamat')
                             ->placeholder('Masukkan alamat...')
