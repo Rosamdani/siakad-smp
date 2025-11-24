@@ -2,13 +2,13 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TeacherPolicy
 {
     use HandlesAuthorization;
-
+    
     public function viewAny(AuthUser $authUser): bool
     {
         return $authUser->can('ViewAny:Teacher');
@@ -63,4 +63,5 @@ class TeacherPolicy
     {
         return $authUser->can('Reorder:Teacher');
     }
+
 }

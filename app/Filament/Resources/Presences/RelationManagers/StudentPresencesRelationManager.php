@@ -12,10 +12,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\TextInputColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class StudentPresencesRelationManager extends RelationManager
 {
     protected static string $relationship = 'studentPresences';
+
+    protected static ?string $title = 'Presensi Siswa';
 
     public function infolist(Schema $schema): Schema
     {
@@ -34,14 +37,12 @@ class StudentPresencesRelationManager extends RelationManager
                     ->label('Nama Siswa')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('student.nisn')
-                    ->label('NISN')
-                    ->searchable(),
                 ViewColumn::make('status')
                     ->label('Status Kehadiran')
                     ->view('tables.columns.presence-status-checkboxes')
                     ->state(fn ($record) => $record->status?->value)
                     ->viewData([
+                        'canUpdatePresence' => Auth::user()->can('Update:Presence'),
                         'statuses' => [
                             PresenceStatus::PRESENT->value => 'Hadir',
                             PresenceStatus::SICK->value => 'Sakit',
@@ -72,17 +73,21 @@ class StudentPresencesRelationManager extends RelationManager
             ]);
     }
 
-    public function updatePresenceStatus($recordId, $statusValue)
+    public function updatePresenceStatus(int $recordId, string $statusValue): void
     {
+        $status = PresenceStatus::tryFrom($statusValue);
+
+        if (! $status) {
+            return;
+        }
+
         $record = $this->getRelationship()->find($recordId);
 
-        if ($record) {
-            if ($record->status?->value === $statusValue) {
-                $record->update(['status' => null]);
-            } else {
-                $record->update(['status' => PresenceStatus::from($statusValue)]);
-            }
+        if (! $record || $record->status?->value === $statusValue) {
+            return;
         }
+
+        $record->update(['status' => $status]);
     }
 
     public function isReadOnly(): bool

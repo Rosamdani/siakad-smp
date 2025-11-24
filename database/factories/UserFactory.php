@@ -36,21 +36,21 @@ class UserFactory extends Factory
     public function isTeacher(): static
     {
         return $this->afterCreating(function (\App\Models\User $user) {
-            $user->assignRole(Roles::TEACHER->value);
+            $user->assignRole(Roles::TEACHER);
         });
     }
 
     public function isStudent(): static
     {
         return $this->afterCreating(function (\App\Models\User $user) {
-            $user->assignRole(Roles::STUDENT->value);
+            $user->assignRole(Roles::STUDENT);
         });
     }
 
     public function isAdmin(): static
     {
         return $this->afterCreating(function (\App\Models\User $user) {
-            $user->assignRole(Roles::ADMIN->value);
+            $user->assignRole(Roles::ADMIN);
         });
     }
 

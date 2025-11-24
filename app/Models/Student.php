@@ -24,6 +24,10 @@ class Student extends User
                 $query->where('name', Roles::STUDENT);
             });
         });
+
+        static::created(function ($student) {
+            $student->assignRole(Roles::STUDENT);
+        });
     }
 
     public function classroom()

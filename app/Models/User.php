@@ -5,12 +5,15 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\Gender;
+use App\Enums\Roles;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, HasRoles, Notifiable;
@@ -69,5 +72,19 @@ class User extends Authenticatable
     public function studentPresences()
     {
         return $this->hasMany(StudentPresence::class, 'student_id');
+    }
+
+    public function studentAssesments()
+    {
+        return $this->hasMany(StudentAssesment::class, 'student_id');
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return match ($panel->getId()) {
+            'admin' => $this->hasAnyRole([Roles::ADMIN, Roles::TEACHER]),
+            'parent' => $this->hasRole(Roles::STUDENT),
+            default => false,
+        };
     }
 }

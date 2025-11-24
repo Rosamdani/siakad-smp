@@ -19,6 +19,10 @@ class Teacher extends User
                 $query->where('name', Roles::TEACHER);
             });
         });
+
+        static::created(function ($teacher) {
+            $teacher->assignRole(Roles::TEACHER);
+        });
     }
 
     public function getMorphClass()

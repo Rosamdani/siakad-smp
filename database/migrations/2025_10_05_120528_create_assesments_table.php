@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Classroom::class);
             $table->foreignIdFor(\App\Models\Subject::class);
             $table->foreignIdFor(\App\Models\AcademicYear::class);
-            $table->string('type');
+            $table->string('type', 10);
             $table->timestamps();
         });
     }
