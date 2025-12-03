@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Settings\LetterheadSetting;
 use BackedEnum;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -16,6 +17,8 @@ use UnitEnum;
 
 class ManageLetterhead extends SettingsPage
 {
+    use HasPageShield;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentCheck;
 
     protected static string $settings = LetterheadSetting::class;

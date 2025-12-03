@@ -3,8 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Enums\Roles;
+use App\Support\RolePermissions;
+use Filament\Facades\Filament;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class SyncRoles extends Command
 {
@@ -25,13 +30,13 @@ class SyncRoles extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Synchronizing roles...');
 
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $defaultPanelId = \Filament\Facades\Filament::getPanel('admin')->getId();
+        $defaultPanelId = Filament::getPanel('admin')->getId();
 
         Artisan::call('shield:generate', [
             '--all' => true,
@@ -39,18 +44,26 @@ class SyncRoles extends Command
             '--panel' => $defaultPanelId,
         ]);
 
-        collect(Roles::cases())->each(function (Roles $role) {
-            \Spatie\Permission\Models\Role::updateOrCreate([
+        collect(Roles::cases())->each(function (Roles $role): void {
+            Role::updateOrCreate([
                 'name' => $role->value,
                 'guard_name' => 'web',
             ]);
         });
 
-        $allPermissions = \Spatie\Permission\Models\Permission::all();
+        $allPermissions = Permission::all();
 
-        $adminRole = \Spatie\Permission\Models\Role::findByName(Roles::ADMIN->value);
+        $adminRole = Role::findByName(Roles::ADMIN->value);
 
         $adminRole->syncPermissions($allPermissions);
+
+        $teacherRole = Role::findByName(Roles::TEACHER->value);
+
+        $teacherPermissions = Permission::query()
+            ->whereIn('name', RolePermissions::teacher())
+            ->get();
+
+        $teacherRole->syncPermissions($teacherPermissions);
 
         $this->info('Roles synchronized successfully.');
     }

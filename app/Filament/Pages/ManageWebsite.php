@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Settings\WebsiteSetting;
 use BackedEnum;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
@@ -19,6 +20,8 @@ use UnitEnum;
 
 class ManageWebsite extends SettingsPage
 {
+    use HasPageShield;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     protected static string $settings = WebsiteSetting::class;
